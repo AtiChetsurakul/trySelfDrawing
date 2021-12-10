@@ -126,4 +126,17 @@ extension ViewController {
                 print(error)
             }
     }
+    
+    
+    func anotherSave() {
+        let data = self.canvasView.drawing.dataRepresentation()
+        do {
+            let newDrawingInFormData = DrawingInFormData(context: self.context)
+            newDrawingInFormData.drawed = data
+            self.drawingInFormDataArray.append(newDrawingInFormData)
+             try self.context.save()
+        }catch{
+            print("Could not save data model: %s", error)
+        }
+    }
 }
